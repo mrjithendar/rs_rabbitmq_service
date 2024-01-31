@@ -46,12 +46,12 @@ spec:
             - containerPort: 15672 # RabbitMQ Management port
               name: rabbitmq-mgmt
           resources:
-            requests:
-              cpu: 500m
-              memory: 100Mi
             limits:
-              cpu: 2
-              memory: 400Mi
+              cpu: 200m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
           env:
             - name: RABBITMQ_DEFAULT_USER
               valueFrom:

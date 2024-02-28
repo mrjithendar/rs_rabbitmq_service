@@ -24,13 +24,13 @@ pipeline {
             }
         }
 
-        stage ('Build Docker Images') {
-            steps {
-                sh "docker build -t ${service} ."
-                sh "docker tag ${service}:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${service}:latest"
-                sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${service}:latest"
-            }
-        }
+        // stage ('Build Docker Images') {
+        //     steps {
+        //         sh "docker build -t ${service} ."
+        //         sh "docker tag ${service}:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${service}:latest"
+        //         sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${service}:latest"
+        //     }
+        // }
         stage ('Deploy App') {
             steps {
                 sh "aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION} --name ${eks_cluster_name}"
